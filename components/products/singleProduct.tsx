@@ -78,7 +78,7 @@ console.log(product)
     <div className="w-full   h-max   mt-24  flex flex-col gap-12  overflow-hidden ">
       {product.image && (
         <div className={` relative w-full  flex  flex-col `}>
-          <div className="w-full  lg:w-[100%] h-screen  overflow-hidden ">
+          <div className="w-full  lg:w-[100%] h-[85vh] lg:h-screen  overflow-hidden ">
             <Swiper
               className="w-full h-full"
               modules={[Navigation, Pagination]}
@@ -149,7 +149,7 @@ console.log(product)
           </div>
 
           {product.image.length > 1 && (
-            <div className=" absolute bottom-[1%] w-full  flex items-center justify-center z-[100]      gap-1">
+            <div className=" absolute bottom-[1%] w-full  flex items-center justify-center z-50     gap-1">
               {product.image.map((img, i) => (
                 <div
                   onClick={() => {

@@ -40,13 +40,14 @@ export default function ProductCard({ data }: { data: ProductData }) {
   return (
     
     <div 
-          className="h-[20rem] md:h-[22rem] lg:h-[25rem] lg:w-[15rem]  w-[12rem]  group  relative   bg-white "
+          // className="h-[20rem] md:h-[22rem] lg:h-[25rem] lg:w-[15rem]  w-[12rem]  group  relative   bg-white "
+           className="h-[25rem]  group  relative"
     >
     <Link
       href={`${isDashboard ? "#" : `/tours/item/${data._id}`}`}
       className="h-full w-full"
     >
-      <div className="w-full h-full relative overflow-hidden">
+      <div className="w-full h-[90%] relative overflow-hidden">
         <Image
           src={data.image[0]}
           alt={data.title}
