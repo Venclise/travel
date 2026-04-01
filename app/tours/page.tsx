@@ -1,7 +1,8 @@
-import ProductCard from '@/components/products/ProductCard'
-import ProductsGrid from '@/components/products/ProductsGrid'
 
-import React from 'react'
+import ProductsGrid from '@/components/products/ProductsGrid'
+import { Suspense } from 'react'
+
+
 
 export default async function  page() {
  
@@ -12,7 +13,10 @@ export default async function  page() {
   return (
   
 <div className='mt-24'>
-<ProductsGrid />
+  
+<Suspense fallback={<p>Loading products...</p>}>
+        <ProductsGrid/>
+      </Suspense>
 </div>
          
 
