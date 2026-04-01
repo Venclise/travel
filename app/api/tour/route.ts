@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import cloudinary from "@/lib/cloudinary";
 import { connectDB } from "@/lib/db";
 import { Tour } from "@/models/tour";

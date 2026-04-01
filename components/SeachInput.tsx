@@ -58,11 +58,11 @@ export default function   SearchInput() {
   return (
 <Combobox items={results}>      
   <div className="flex items-center gap-4 bg-gray-50  rounded-full px-5 py-3" >
-    <Search strokeWidth={1} className="w-4"/>
+    <Search strokeWidth={1} size={15} className='w-max'/>
 <ComboboxInput type="text" placeholder="Search here" value={search} className=" focus-visible:ring-gray-100 w-full font-semibold placeholder:text-gray-800 text-xl border-0 ring-0  " onChange={(e) => setSearch(e.target.value)}/>
   </div>
 
-<ComboboxContent className="flex flex-col h-[50vh] ">
+<ComboboxContent className="flex flex-col h-[50vh] w-full ">
      {results.length > 0 ? (
         <ComboboxList className=" bg-gray-50 flex flex-col w-full mt-12  z-50">
           <span className="text-sm font-semibold text-yellow-500 ">
@@ -82,7 +82,7 @@ export default function   SearchInput() {
           ))}
         </ComboboxList>
       ): (
-         <ComboboxList className={`${search.length ? "hidden" : "flex"} bg-gray-50  flex-col w-full p-10  z-50`}>
+         <ComboboxList className={`${search.length ? "hidden" : "flex"} bg-gray-50  flex-col w-full p-10  z-50 `}>
           <span className="text-md font-semibold p-2 text-yellow-500">
            Quick Search
           </span>

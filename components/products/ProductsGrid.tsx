@@ -51,7 +51,7 @@ export default function ProductsGrid() {
 
   return (
     <div className="lg:mt-24 mt-12 p-1">
-      <div className="flex items-center flex-col-reverse justify-between gap-4 lg:p-10 p-5">
+      <div className="flex items-center flex-col-reverse justify-between gap-4 md:p-5 p-1">
     
 
         <div className="flex w-full items-center">
