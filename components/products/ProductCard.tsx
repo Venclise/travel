@@ -40,7 +40,7 @@ export default function ProductCard({ data }: { data: ProductData }) {
   return (
     
     <div 
-          className="h-[20rem] md:h-[22rem] lg:h-[25rem] lg:w-[15rem]  w-[13rem]  group  relative   bg-white "
+          className="h-[20rem] md:h-[22rem] lg:h-[25rem] lg:w-[15rem]  w-[12rem]  group  relative   bg-white "
     >
     <Link
       href={`${isDashboard ? "#" : `/tours/item/${data._id}`}`}

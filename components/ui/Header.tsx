@@ -60,7 +60,7 @@ export default function Header() {
       </Link>
       </SheetTitle>
       <SheetDescription>
-              <div className="flex flex-col justify-around h-[85vh] ">
+              <div className="flex flex-col justify-around h-[70vh] mt-8 ">
           <Link href={`/tours`}className='text-md text-neutral-800 hover:underline'>
               All Tours
             </Link>
