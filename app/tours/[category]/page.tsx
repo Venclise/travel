@@ -32,7 +32,7 @@ export default async function page({
   const products = await res.json();
 
   return (
-    <div className="mt-12 p-5">
+    <div className="mt-12  p-1">
       <div className="flex flex-col gap-2 mt-12 px-5">
 
       <h1 className="text-3xl   ">
@@ -59,7 +59,7 @@ We’ve put together packages of incredible activities and hotels so you can get
       </div>
 
 
-      <div className="grid grid-cols-2 justify-center items-center md:grid-cols-4 lg:grid-cols-5 gap-y-20 py-10">
+ <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 lg:gap-5  gap-y-20 py-20">
         {products.map((product: any) => (
           <ProductCard data={product} key={product._id} />
         ))}

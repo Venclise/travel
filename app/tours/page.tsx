@@ -1,6 +1,7 @@
 
 import ProductsGrid from '@/components/products/ProductsGrid'
 import { Suspense } from 'react'
+import Loading from './loading'
 
 
 
@@ -14,7 +15,7 @@ export default async function  page() {
   
 <div className='mt-24'>
   
-<Suspense fallback={<p>Loading products...</p>}>
+<Suspense fallback={<Loading />}>
         <ProductsGrid/>
       </Suspense>
 </div>
