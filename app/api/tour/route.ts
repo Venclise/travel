@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 import cloudinary from "@/lib/cloudinary";
 import { connectDB } from "@/lib/db";
 import { Tour } from "@/models/tour";
@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
     const price = Number(formData.get("price"));
     const cutprice = Number(formData.get("cutprice"));
     const category = formData.get("category") as string;
+    const tourtype = formData.get("tourtype") as string;
     const rawItinerary = formData.get("itinerary") as string;
     const location = formData.get("location") as string;
     let parsedData = JSON.parse(rawItinerary);
@@ -32,7 +33,7 @@ export async function POST(req: NextRequest) {
       !parsedData ||
       isNaN(days) ||
       isNaN(nights) ||
-      !location
+      !location 
     ) {
       return NextResponse.json({ error: "Missing Fields" }, { status: 400 });
     }
@@ -62,6 +63,7 @@ export async function POST(req: NextRequest) {
       image: imagesUrls,
       itinerary: parsedData,
       location,
+      tourtype,
     });
     return NextResponse.json(tour, { status: 201 });
   } catch (e) {
@@ -81,17 +83,27 @@ export async function GET(req: Request) {
 
     const category = searchParams.get("category");
     const sort = searchParams.get("sort");
-    const limit = searchParams.get("limt");
+    const limit = searchParams.get("limit");
     const sale = searchParams.get("sale");
     const search = searchParams.get("search");
-
+    const tourtype = searchParams.get("tourtype")?.trim();
     const query: any = {};
 
-    if (category && category !== "all") query.category = category;
 
-      if (search) query.title = { $regex: search, $options: "i" };
+    if (category && category !== "all") {
+      query.category = { $regex: `^${category}$`, $options: "i" };
+    }
+
+
+       if (tourtype) {
+      query.tourtype  = { $regex: `^${tourtype}$`, $options: "i" };
+    }
+
+
+
+    if (search) query.title = { $regex: search, $options: "i" };
     if (sale === "true") {
-      query.$expr = { $gt: ["cutprice", "price"] };
+      query.$expr = { $gt: ["$cutprice", "$price"] };
     }
 
     let mongooseQuery = Tour.find(query);

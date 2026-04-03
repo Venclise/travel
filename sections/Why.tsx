@@ -1,30 +1,40 @@
-import { Bubbles, Car, GraduationCap } from 'lucide-react'
+import { Bubbles, Car, GraduationCap, Phone } from 'lucide-react'
 import React from 'react'
 
 export default function Why() {
   return (
-    <div id="why" className='lg:p-10 p-5 flex flex-col gap-8'>
-         <h2  className='text-4xl md:text-5xl text-yellow-500 font-semibold'>
-    Why Book Pakistan Tour with us?
+    <div id="why" className='lg:p-10 p-5 flex items-center justify-center flex-col gap-8'>
+         <h2  className='text-4xl text-yellow-500 font-semibold'>
+    Why Book Tour with CamPak
       </h2>
 
-      <ul className='flex flex-col gap-4'>
-        <li className='text-lg flex items-center gap-2' >
-            <Bubbles />
-            Featuring comfortable accommodation
+      <ul className='flex  gap-4 flex-wrap items-center justify-center'>
+        <li className='text-lg text-center flex items-center gap-2 flex-col justify-center' >
+            <Phone />
+            <span className='font-semibold '>
+         24/7 customer support
+            </span>
+
+No matter the time zone, we’re here to help.
         </li>
-            <li className='text-lg flex items-center gap-2' >
+             <li className='text-lg text-center  flex items-center gap-2 flex-col' >
             <GraduationCap />
-        Expert guides
+            <span className='font-semibold'>
+         Expert guides
+            </span>
+
+Our expert guides will Guide you throughout the tour.
         </li>
-            <li className='text-lg flex items-center gap-2' >
+                     <li className='text-center  text-lg flex items-center gap-2 flex-col' >
+
             <Car />
-     Convenient transportation
+             <span className='font-semibold'>
+     Convenient transportation  
+            </span> 
+            Convenient Transpotation and comfortable journey.
         </li>
       </ul>
-      <p className=' text-sm max-w-lg  '>
-        We offers affordable adventures that are fun and affordable. To provide our guests with a truly memorable travel experience, we hand pick every hotel and restaurant and design every tour with care.
-      </p>
+
     </div>
   )
 }

@@ -108,7 +108,7 @@ export default function ProductCard({ data }: { data: ProductData }) {
 </div>
 
           <p className="text-xs  flex items-center font-bold ">
-            <span className=" text-sm   ">Rs.</span>
+            <span className=" text-sm   ">$</span>
             {data.price.toLocaleString()}
           </p>
           </div>

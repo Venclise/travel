@@ -39,7 +39,7 @@ import Image from "next/image";
 import { toast } from "sonner";
 import { title } from "process";
 import { Spinner } from "../ui/spinner";
-import { category } from "@/lib/constants";
+import { category, Tourtypes } from "@/lib/constants";
 
 interface ItineraryItem {
   day: number;
@@ -60,6 +60,7 @@ export default function AddProduct() {
     nights: string;
     days: string;
     location: string;
+    tourtype:string;
   }>({
     title: "",
     price: "",
@@ -69,6 +70,7 @@ export default function AddProduct() {
     nights: "",
     days: "",
     location: "",
+        tourtype:""
   });
 
   const [itinerary, setItinerary] = useState<ItineraryItem[]>([]);
@@ -91,7 +93,7 @@ export default function AddProduct() {
       itinerary.length === 0 ||
       !productInfo.nights ||
       !productInfo.days ||
-      !location
+      !productInfo.location
     ) {
       toast.error("Please fill in the required feild");
       return;
@@ -114,12 +116,13 @@ export default function AddProduct() {
     formData.append("price", productInfo.price);
     formData.append("cutprice", productInfo.cutprice);
     formData.append("category", productInfo.category);
+    formData.append("tourtype", productInfo.tourtype);
     formData.append("itinerary", JSON.stringify(itinerary));
     formData.append("days", productInfo.days);
     formData.append("nights", productInfo.nights);
     formData.append("location", productInfo.location);
 
-    console.log(location)
+    console.log(productInfo.tourtype)
 
     images.forEach((img) => {
       formData.append("images", img);
@@ -145,6 +148,7 @@ export default function AddProduct() {
         nights: "",
         days: "",
         location: "",
+        tourtype: ""
       });
 
       setPreviews([]);
@@ -329,6 +333,40 @@ export default function AddProduct() {
                 <SelectContent>
                   <SelectGroup>
                     {category.map(
+                      ({ id, title }: { id: number; title: string }) => (
+                        <SelectItem
+                          key={id}
+                          value={title}
+                          className="capitalize"
+                        >
+                          {title}
+                        </SelectItem>
+                      ),
+                    )}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+             <div className="flex flex-col">
+              <label
+                htmlFor="cat"
+                className="capitalize p-2  text-md font-semibold    "
+              >
+                Select Tour type
+              </label>
+              <Select
+                
+                onValueChange={(e) =>
+                  setProductInfo({ ...productInfo, tourtype: e })
+              
+                }
+              >
+                <SelectTrigger className="flex-1" id="cat">
+                  <SelectValue placeholder="Select Tour type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    {Tourtypes.map(
                       ({ id, title }: { id: number; title: string }) => (
                         <SelectItem
                           key={id}

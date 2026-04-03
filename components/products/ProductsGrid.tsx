@@ -7,12 +7,16 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator
 } from "../ui/select";
 import ProductCard from "./ProductCard";
-import { category } from "@/lib/constants";
+import { category, Tourtypes } from "@/lib/constants";
 import Link from "next/link";
 import SearchInput from "../SeachInput";
-import { Filter } from "lucide-react";
+import { Filter, Search } from "lucide-react";
+
 
 
 
@@ -25,6 +29,7 @@ export default function ProductsGrid() {
   const [products, setProducts] = useState<any[]>([]);
   const sale = searchParams.get("sale");
   const sort = searchParams.get("sort");
+  const tourtype= searchParams.get("tourtype")
 
   useEffect(() => {
     async function fetchProducts() {
@@ -32,6 +37,7 @@ export default function ProductsGrid() {
 
       if (sort) params.set("sort", sort);
       if (sale) params.set("sale", "true");
+         if(tourtype) params.set("tourtype",tourtype)
 
       const url = `/api/tour${
         params.toString() ? `?${params.toString()}` : ""
@@ -47,7 +53,7 @@ export default function ProductsGrid() {
     }
 
     fetchProducts();
-  }, [sale, sort]);
+  }, [sale, sort,tourtype]);
 
   return (
     <div className="lg:mt-24 mt-12 p-1">
@@ -59,39 +65,66 @@ export default function ProductsGrid() {
 <div className="w-full ">
 <SearchInput />
 </ div>
+
+
         <Select
           value={sort || ""}
           onValueChange={(value) => {
             const params = new URLSearchParams(searchParams.toString());
             
+
+            params.delete("sort")
+            params.delete("sale")
+            params.delete("tourtype")
+
+
+
             if (value === "newest") {
               params.set("sort", "newest");
-              params.delete("sale");
+          
             }
             
-            if (value === "sale") {
+            else if (value === "sale") {
               params.set("sale", "true");
-              params.delete("sort");
+            
+            }else {
+              params.set("tourtype",value)
             }
             
-            router.push(`/tours?${params.toString()}`);
-          }}
+           
+              router.push(`/tours?${params.toString()}`);
+            }}
           >
           <SelectTrigger className="w-max rounded-full">
             <SelectValue placeholder={<Filter />} />
           </SelectTrigger>
           <SelectContent>
+          <SelectGroup>
             <SelectItem value="newest">Newest</SelectItem>
             <SelectItem value="sale">On Sale</SelectItem>
-          </SelectContent>
+         </SelectGroup>
+          <SelectSeparator />
+         <SelectGroup>
+          <SelectLabel>Tour Type</SelectLabel>
+          {
+            Tourtypes.map(({id,title}) => (
+              <SelectItem value={title} key={id}>{title}</SelectItem>
+            ))
+          }
+        </SelectGroup>
+            </SelectContent>
         </Select>
           </div>
       </div>
 
- <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 lg:gap-5  gap-y-20 py-20">
-        {products.map((item) => (
-          <ProductCard key={item._id} data={item} />
-        ))}
+ <div className={` ${products.length === 0 ? "h-screen w-full flex items-center justify-center" : "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 lg:gap-5  gap-y-20 py-20"}`}>
+        { products.length === 0 ? <div className="flex items-center gap-4"> <Search /> No Result Found </div> : products.map((item) => {
+return (
+
+  <ProductCard key={item._id} data={item} />
+)
+        }
+        )}
       </div>
     </div>
   );

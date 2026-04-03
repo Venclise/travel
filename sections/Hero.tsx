@@ -8,16 +8,16 @@ export default function Hero() {
   return (
     <div className='h-screen lg:h-[90vh] w-full relative'>
         <div className='h-full w-full relative'>
-            <Image src="/hero.jpg" className='w-full h-full object-cover  brightness-70' fill alt="Background" />
+            <Image src="/moun.jpg" className='w-full h-full object-cover  brightness-70' fill alt="Background" />
         </div>
 
         <div className='absolute h-full w-full flex justify-center gap-8  flex-col top-0 lg:p-10 p-5'>
-            <h1 className='text-white font-semibold text-5xl  md:text-6xl max-w-xl text-left'>
-    Explore Pakistan, wherever you are
+            <h1 className='text-white font-semibold text-6xl  md:text-7xl max-w-xl text-left'>
+ Go Everywhere. Remember Everything.
       </h1>
       <div className='flex gap-4'>
 
-   <Link href="/tours">
+   <Link href="/tours"> 
       <Button className='bg-yellow-500 hover:bg-yellow-600 w-max py-5 text-white  rounded-full cursor-pointer'>
         <Luggage />
           View Packages

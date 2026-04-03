@@ -118,7 +118,7 @@ export default function BookFrom({
 
             <PhoneInput
               defaultCountry="PK"
-              countries={["PK"]}
+              
               className="w-full h-[2.5rem] border border-gray-300 rounded-md px-3 py-2 outline-0 placeholder:text-xs "
               placeholder="3123123123"
               id="number"

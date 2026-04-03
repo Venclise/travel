@@ -127,7 +127,7 @@ console.log(product)
            
            text-blue-500   
           "
-            >
+            > 
               <ChevronLeft size={35} />
             </button>
 
@@ -204,7 +204,7 @@ bg-neutral-700
            
               {product.cutprice > product.price && (
                 <span className="text-lg line-through  ">
-                  Rs.{product.cutprice.toLocaleString()}
+                  ${product.cutprice.toLocaleString()}
                 </span>
               )}
 
@@ -212,7 +212,7 @@ bg-neutral-700
             <div className="flex items-center gap-8 mt-8">
           
               <p className=" text-5xl lg:text-5xl font-bold ">
-                Rs.{product.price.toLocaleString()}
+                ${product.price.toLocaleString()}
               </p>
             </div>
             </div>

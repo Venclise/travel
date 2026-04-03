@@ -1,10 +1,31 @@
 import ProductCard from "@/components/products/ProductCard";
+import { Metadata } from "next";
 import React from "react";
 
 const slugToCategory = (slug?: string) => {
   if (!slug) return "";
   return slug.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { category?: string };
+}): Promise<Metadata> {
+  const { category } = await params;
+  const formattedCategory = slugToCategory(category);
+
+  return {
+    title: `${formattedCategory} Packages | Explore Our Best Deals`,
+    description: `Discover incredible activities and hotels with our ${formattedCategory} packages. Choose your favorite itinerary and customize your dream experience today.`,
+    openGraph: {
+      title: `${formattedCategory} Travel Experiences`,
+      description: `Explore the best ${formattedCategory} activities and luxury stays.`,
+      type: "website",
+    },
+  };
+}
+
 
 export default async function page({
   params,

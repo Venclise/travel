@@ -1,37 +1,46 @@
 export const  category = [
+ 
     {
-        id: 1,
-        title: "Hunza",
-        slug: "hunza"
+       id: 1,
+        title: "Dubai",
+        slug: "dubai"   
     },
-    {
-        id: 2,
-        title: "Swat",
-        slug: "swat"
-
+        {
+       id: 2,
+        title: "Thailand",
+        slug: "thailand"   
     },
-    {
-id: 3,
-title: "Fairy Meadows",
-        slug: "fairy-meadows"
-
+        {
+       id: 3,
+        title: "Turkey",
+        slug: "turkey"   
     },
     {
         id: 4,
-        title: "Kumrat",
-        slug: "kumrat"
+        title: "Maldives",
+        slug: "maldives"
+    }
+]
 
+export const Tourtypes = [
+    {
+        id: 1,
+        title: "Romantic Tours",
+        slug:"romantic-tours"
     },
     {
-        id: 5,
-        title: "kashmir",
-        slug: "kashmir"
-
+              id: 2,
+        title: "Group Tours",
+        slug:"group-tours"
     },
-        {
-        id: 6,
-        title: "Honeymoon Packages",
-        slug: "honeymoon-packages"
-
+       {
+              id: 3,
+        title: "Honeymoon",
+        slug:"honeymoon"
+    },
+    {
+                  id: 4,
+        title: "Religious",
+        slug:"religious"
     }
 ]

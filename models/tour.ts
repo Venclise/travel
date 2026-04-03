@@ -39,6 +39,9 @@ const TourSchema = new Schema({
     type: String,
     required: true,
   },
+  tourtype:{
+    type: String,
+  },
 
        image :{
   type: [String],

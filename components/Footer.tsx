@@ -7,7 +7,7 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <div className='bg-gray-50 border-t lg:p-20 p-10 h-max w-full flex flex-wrap '>
+    <div className='bg-gray-50 border-t lg:p-20 p-10 h-max w-full flex gap-12 flex-wrap '>
                  <div className='flex flex-col gap-3 w-max'>
 <h4 className='font-semibold'>Quick Links</h4>
           {category.map(({ id, title, slug }) => (
