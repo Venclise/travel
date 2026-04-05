@@ -30,10 +30,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+
 import Image from "next/image";
 
 import { toast } from "sonner";
@@ -187,7 +184,7 @@ export default function AddProduct() {
         >
           <ArrowLeft />
         </Button>
-        <h1 className="font-semibold text-2xl lg:text-4xl  ">Add a product</h1>
+        <h1 className="font-semibold text-2xl lg:text-4xl  ">Add a tour</h1>
       </div>
       <div className="w-full flex lg:flex-row flex-col-reverse ">
         <form

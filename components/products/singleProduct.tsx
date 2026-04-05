@@ -108,6 +108,7 @@ console.log(product)
                     fill
                     src={img}
                     className="w-full h-full object-cover  max-w-full max-h-full "
+                    sizes="100%"
                   />
                 </SwiperSlide>
               ))}

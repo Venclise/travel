@@ -21,6 +21,7 @@ export default async function page() {
   
   return (
     <div className='h-max lg:p-10 p-5 w-full'>
+            <h1 className="font-semibold text-4xl">Active Orders</h1>
       <ActiveBookings />
       <h1 className="font-semibold text-4xl">Products</h1>
       <Link href="/dashboard/add">add</Link>

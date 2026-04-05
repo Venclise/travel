@@ -52,6 +52,8 @@ export default function ProductCard({ data }: { data: ProductData }) {
           src={data.image[0]}
           alt={data.title}
           fill
+          blurDataURL={data.image[0]}
+          placeholder="blur"
           className={`object-cover transition-opacity duration-300 ${
             !isDashboard && data.image.length > 1
               ? "group-hover:opacity-0"
@@ -65,6 +67,7 @@ export default function ProductCard({ data }: { data: ProductData }) {
             src={data.image[1]}
             alt={data.title}
             fill
+            
             className="object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           />
         )}

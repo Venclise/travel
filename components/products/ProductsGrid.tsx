@@ -15,7 +15,8 @@ import ProductCard from "./ProductCard";
 import { category, Tourtypes } from "@/lib/constants";
 import Link from "next/link";
 import SearchInput from "../SeachInput";
-import { Filter, Search } from "lucide-react";
+import { Filter, Flag, Search } from "lucide-react";
+import Loading from "@/app/tours/loading";
 
 
 
@@ -27,12 +28,14 @@ export default function ProductsGrid() {
   const router = useRouter();
 
   const [products, setProducts] = useState<any[]>([]);
+  const [loading,setLoading] = useState(false)
   const sale = searchParams.get("sale");
   const sort = searchParams.get("sort");
   const tourtype= searchParams.get("tourtype")
 
   useEffect(() => {
     async function fetchProducts() {
+      setLoading(true)
       const params = new URLSearchParams();
 
       if (sort) params.set("sort", sort);
@@ -43,6 +46,7 @@ export default function ProductsGrid() {
         params.toString() ? `?${params.toString()}` : ""
       }`;
 
+    
       const res = await fetch(url, { cache: "no-store" });
       if (!res.ok) {
         throw new Error("Failed to fetch the products");
@@ -50,7 +54,10 @@ export default function ProductsGrid() {
       const data = await res.json();
 
       setProducts(data);
+      setLoading(false)
     }
+
+    
 
     fetchProducts();
   }, [sale, sort,tourtype]);
@@ -117,14 +124,18 @@ export default function ProductsGrid() {
           </div>
       </div>
 
- <div className={` ${products.length === 0 ? "h-screen w-full flex items-center justify-center" : "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 lg:gap-5  gap-y-20 py-20"}`}>
-        { products.length === 0 ? <div className="flex items-center gap-4"> <Search /> No Result Found </div> : products.map((item) => {
-return (
+      {/* {loading && <Loading />} */}
 
-  <ProductCard key={item._id} data={item} />
-)
+ <div className={` ${products.length === 0 ? "h-screen w-full flex items-center justify-center" : "grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2 lg:gap-5  gap-y-20 py-20"}`}>
+        {products.map((item) => {
+          return (
+            
+            <ProductCard key={item._id} data={item} />
+          )
         }
-        )}
+      )
+    }
+    { loading==false &&  products.length === 0 && <div className="flex items-center gap-4"> <Search /> No Result Found  </div> }  
       </div>
     </div>
   );
